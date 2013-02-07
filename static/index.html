@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title>GrammarBox</title>
+    <script src="jquery-1.9.0.min.js"></script>
+    <script src="underscore-min.js"></script>
+    <script src="raphael-min.js"></script>
+    <script src="grammar-box.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Didact+Gothic' rel='stylesheet' type='text/css'>
+    <style>
+      td {
+      font-size:48px;
+      font-family: 'Didact Gothic', sans-serif;
+      }
+      
+      input {
+      line-height:24px;
+      font-size:48px;
+      font-family: 'Didact Gothic', sans-serif;
+      }
+      
+      svg {
+      position:fixed;
+      left:50%;
+      margin-left:-10px;
+      }
+
+      #container {
+      position:fixed;
+      margin-left:200px;
+      margin-top:200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <input type="text" name="textbox" id="textbox" size="40"/><br />
+      <table id="out" cellpadding="10">
+	<tr id="shapes"></tr>
+	<tr id="words"></tr>
+      </table>
+    </div>
+  </body>
+</html>
