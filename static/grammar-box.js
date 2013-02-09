@@ -169,32 +169,44 @@ function posToShapeFn(pos){
     return(drawFn)
 }
 
+
+function tokenizeAndDrawTokens(){
+    $.ajax({
+	url: "/" + $("#textbox").val()
+    }).done(function(data){
+	$("#words").empty()
+	$("#shapes").empty()
+	_.map($.parseJSON(data), function(d){
+	    token = d[0]
+	    pos = d[1]
+	    word = d[2]
+	    $("<td/>", {
+		text: word,
+		title: token + " (" + pos + ")"
+	    }).appendTo("#words")
+	    shape = $("<td/>", {
+		title: pos
+	    })
+	    var paper = Raphael(shape[0], 
+				shapeCanvasSize, 
+				shapeCanvasSize)
+	    posToShapeFn(pos)(paper)
+	    shape.appendTo("#shapes")
+	})
+    })
+}
+
 $(document).ready(function(){
+    $("#textbox").focus() // focus immediately on text input
     $(document).keyup(function(event){
 	if (event.keyCode == 32) { // space
-	    $.ajax({
-		url: "/" + $("#textbox").val()
-	    }).done(function(data){
-		$("#words").empty()
-		$("#shapes").empty()
-		_.map($.parseJSON(data), function(d){
-		    token = d[0]
-		    pos = d[1]
-		    word = d[2]
-		    $("<td/>", {
-			text: word, //+ " (" + pos + ")"
-			title: token 
-		    }).appendTo("#words")
-		    shape = $("<td/>", {
-			title: pos
-		    })
-		    var paper = Raphael(shape[0], 
-					shapeCanvasSize, 
-					shapeCanvasSize)
-		    posToShapeFn(pos)(paper)
-		    shape.appendTo("#shapes")
-		})
-	    })
+	    tokenizeAndDrawTokens()
+	}
+	if (timer) {
+	    clearTimeout(timer);
+	    timer = setTimeout(tokenizeAndDrawTokens, WAIT_TIME);
+	} else {
+	    timer = setTimeout(tokenizeAndDrawTokens, WAIT_TIME);
 	}
     })
 })
