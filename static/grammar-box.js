@@ -94,6 +94,10 @@ function posToShapeFn(pos){
 	drawFn = largeBlackTriangle
 	break
 
+    case 'NNP':
+	drawFn = largeBlackTriangle
+	break
+
     case 'PRP':
 	drawFn = largeBlackTriangle
 	break
@@ -102,11 +106,23 @@ function posToShapeFn(pos){
 	drawFn = largeRedCircle
 	break
 
+    // case 'NNS': // this is a hack! 
+    // 	drawFn = largeRedCircle// the tokenizer mis-tags verbs as plurals
+    // 	break
+
+    case 'VBD':
+	drawFn = largeRedCircle
+	break
+
     case 'VBZ':
 	drawFn = largeRedCircle
 	break
 
     case 'IN':
+	drawFn = greenCrescent
+	break
+
+    case 'RP':
 	drawFn = greenCrescent
 	break
 
@@ -122,6 +138,10 @@ function posToShapeFn(pos){
 	drawFn = mediumOrangeCircle
 	break
 
+    case 'RBR':
+	drawFn = mediumOrangeCircle
+	break
+
     case 'VBG':
 	drawFn = largeRedCircle
 	break
@@ -131,6 +151,10 @@ function posToShapeFn(pos){
 	break
 	
     case 'JJ':
+	drawFn = mediumDarkBlueTriangle
+	break
+
+    case 'JJR':
 	drawFn = mediumDarkBlueTriangle
 	break
 
