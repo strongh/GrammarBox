@@ -1,49 +1,86 @@
-var shapeCanvasSize = 20
+var shapeCanvasSize = 60
+var timer;
+var WAIT_TIME=500;
+var EQ_TRIANGLE_RATIO=1.45
 
 function pinkRectangle(paper){
-    square = paper.rect(0, shapeCanvasSize/2,
-			shapeCanvasSize, shapeCanvasSize/2)
+    square = paper.rect(0, shapeCanvasSize*2/3,
+			shapeCanvasSize, shapeCanvasSize/3)
     
     square.attr("fill", "#F984EF");
     square.attr("stroke", "#F984EF");
 }
 
 function smallLightBlueTriangle(paper){
-    triangle = paper.path("M5,20,15,20,10," + 10*1.41 + "z")
+    scale = 0.5
+    triangle = paper.path("M" + shapeCanvasSize*(1-scale)/2
+			  + "," + shapeCanvasSize
+
+			  + "," + shapeCanvasSize*(1+scale)/2
+			  + "," + shapeCanvasSize
+
+			  + "," + shapeCanvasSize/2
+			  + "," + shapeCanvasSize*(1-EQ_TRIANGLE_RATIO*scale/2)
+			  + "z")
     triangle.attr("fill", "#B4CDCD");
     triangle.attr("stroke", "#B4CDCD");
 }
 
 function mediumDarkBlueTriangle(paper){
-    triangle = paper.path("M5,20,15,20,10," + 10*1.41 + "z")
+    scale = 0.75
+    triangle = paper.path("M" + shapeCanvasSize*(1-scale)/2
+			  + "," + shapeCanvasSize
+			  + "," + shapeCanvasSize*(1+scale)/2
+			  + "," + shapeCanvasSize
+			  + "," + shapeCanvasSize/2
+			  + "," + shapeCanvasSize*(1-EQ_TRIANGLE_RATIO*scale/2)
+			  + "z")
     triangle.attr("fill", "#0D4F8B");
     triangle.attr("stroke", "#0D4F8B");
 }
 
 function largeBlackTriangle(paper){
-    triangle = paper.path("M5,20,15,20,10," + 10*1.41 + "z")
+    scale = 1.0
+    triangle = paper.path("M" + shapeCanvasSize*(1-scale)/2
+			  + "," + shapeCanvasSize
+
+			  + "," + shapeCanvasSize*(1+scale)/2
+			  + "," + shapeCanvasSize
+
+			  + "," + shapeCanvasSize/2
+			  + "," + shapeCanvasSize*(1-EQ_TRIANGLE_RATIO*scale/2)
+			  + "z")
     triangle.attr("fill", "#000");
     triangle.attr("stroke", "#000");
 }
 
 function largeRedCircle(paper){
-    circle = paper.circle(10, 10, 10/1.41)
+    circle = paper.circle(shapeCanvasSize/2,
+			  shapeCanvasSize/2,
+			  shapeCanvasSize/(2*1.41))
     circle.attr("fill", "#F00");
     circle.attr("stroke", "#F00");
 }
 
 function mediumOrangeCircle(paper){
-    circle = paper.circle(10, 10, 10/1.41)
+    scale = 0.6
+    circle = paper.circle(shapeCanvasSize/2,
+			  shapeCanvasSize/2,
+			  scale*shapeCanvasSize/(2*1.41))
     circle.attr("fill", "#FF8C00");
     circle.attr("stroke", "#FF8C00");
 }
 
 function greenCrescent(paper){
-    circle = paper.circle(10, 18, 10/1.41)
+    circle = paper.circle(shapeCanvasSize/2, 
+			  shapeCanvasSize*0.9, 
+			  shapeCanvasSize/(2*1.41))
     circle.attr("fill", "#308014");
     circle.attr("stroke", "#308014");
 
-    circle = paper.circle(10, 24, 10)
+    circle = paper.circle(shapeCanvasSize/2, 
+			  shapeCanvasSize*1.2, 
+			  shapeCanvasSize/2)
     circle.attr("fill", "#FFF");
     circle.attr("stroke", "#FFF");
 }
