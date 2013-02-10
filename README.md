@@ -7,7 +7,7 @@ GrammarBox is a very simple webapp built using NLTK, web.py, jQuery, and Raphaë
 GrammarBox is inspired by language activities in a primary Montessori classroom environment.
 
 
-It is bare bones, pre-alpha-quality, and not recommended for any practical use. Enjoy!
+It is bare bones, pre-alpha-quality, and is not recommended for any practical use. Enjoy!
 
 Setup
 ====
